@@ -1,0 +1,38 @@
+[  0%] Built target scap_error
+[  2%] Built target openssl
+[  4%] Built target zlib
+[ 10%] Built target yaml-cpp
+[ 11%] Built target driver_event_schema
+[ 13%] Built target uthash
+[ 16%] Built target tbb
+[ 18%] Built target valijson
+[ 20%] Built target jsoncpp
+[ 22%] Built target re2
+[ 23%] Built target jemalloc
+[ 37%] Built target elf
+[ 39%] Built target curl
+[ 40%] Built target cxxopts
+[ 43%] Built target container_plugin
+[ 44%] Built target c-ares
+[ 45%] Built target protobuf
+[ 47%] Built target scap_platform_util
+[ 49%] Built target scap_event_schema
+[ 49%] Built target scap_engine_noop
+[ 51%] Built target scap_engine_util
+[ 51%] Built target scap_savefile_converter
+[ 53%] Built target libbpf
+[ 55%] Built target grpc
+[ 55%] Built target container
+[ 58%] Built target scap_engine_gvisor
+[ 60%] Built target scap_platform
+[ 60%] Built target scap_engine_source_plugin
+[ 61%] Built target scap_engine_nodriver
+[ 62%] Built target scap_engine_savefile
+[ 63%] Built target scap_engine_kmod
+[ 64%] Built target scap_engine_bpf
+[ 64%] Building C object libpman/CMakeFiles/pman.dir/src/maps.c.o
+[ 64%] Building C object libpman/CMakeFiles/pman.dir/src/stats.c.o
+[ 64%] Building C object libpman/CMakeFiles/pman.dir/src/lifecycle.c.o
+[ 64%] Building C object libpman/CMakeFiles/pman.dir/src/programs.c.o
+[ 65%] Building C object libpman/CMakeFiles/pman.dir/src/ringbuffer.c.o
+[ 65%] Building C object libpman/CMakeFiles/pman.dir/src/configuration.c.o

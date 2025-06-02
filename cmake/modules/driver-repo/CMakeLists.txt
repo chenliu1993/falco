@@ -22,8 +22,9 @@ message(STATUS "Driver version: ${DRIVER_VERSION}")
 
 ExternalProject_Add(
 	driver
-	URL "https://github.com/${DRIVER_REPO}/archive/${DRIVER_VERSION}.tar.gz"
-	URL_HASH "${DRIVER_CHECKSUM}"
+	# URL "https://github.com/${DRIVER_REPO}/archive/${DRIVER_VERSION}.tar.gz"
+	# URL_HASH "${DRIVER_CHECKSUM}"
+	SOURCE_DIR "${CMAKE_SOURCE_DIR}/libs"
 	CONFIGURE_COMMAND ""
 	BUILD_COMMAND ""
 	INSTALL_COMMAND ""

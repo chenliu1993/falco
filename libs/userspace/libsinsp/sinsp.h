@@ -975,7 +975,7 @@ public:
 	static constexpr uint32_t s_max_fdtable_size = MAX_FD_TABLE_SIZE;
 	bool m_auto_threads_purging = true;
 	uint64_t m_thread_timeout_ns = (uint64_t)1800 * ONE_SECOND_IN_NS;
-	uint64_t m_threads_purging_scan_time_ns = (uint64_t)1200 * ONE_SECOND_IN_NS;
+	uint64_t m_threads_purging_scan_time_ns = (uint64_t)300 * ONE_SECOND_IN_NS;
 
 	//
 	// Users/groups limits

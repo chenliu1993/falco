@@ -10,15 +10,16 @@ fi
 
 # Install deps and bpftool
 sudo apt update -y && sudo apt install -y --no-install-recommends git ca-certificates cmake curl wget build-essential clang pkg-config autoconf automake libtool m4 rpm alien llvm libelf-dev
-
+echo $(pwd)
 srcPath=$(pwd)
 
 cd /tmp
 git clone -b v7.5.0 --recurse-submodules https://github.com/libbpf/bpftool.git
 cd bpftool && git submodule update --init
-cd src && make install && sudo install ./bpftool /usr/local/sbin/bpftool
+cd src && sudo make install && sudo install ./bpftool /usr/local/sbin/bpftool
 
 cd ${srcPath}
+echo ${srcPath}
 rm -rf skeleton-build build
 
 cmake -B skeleton-build -S . -DUSE_BUNDLED_DEPS=ON -DCREATE_TEST_TARGETS=Off -DFALCO_VERSION=${VERSION} -DFALCOSECURITY_LIBS_SOURCE_DIR="$(pwd)/libs" -DDRIVER_SOURCE_DIR="$(pwd)/libs/driver"

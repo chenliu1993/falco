@@ -20,7 +20,7 @@ cd src && sudo make install && sudo install ./bpftool /usr/local/sbin/bpftool
 
 cd ${srcPath}
 ls ${srcPath}
-ls ${srcPath}/driver
+ls ${srcPath}/libs/driver
 
 rm -rf skeleton-build build
 

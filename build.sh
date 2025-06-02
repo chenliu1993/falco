@@ -14,7 +14,7 @@ sudo apt update -y && sudo apt install -y --no-install-recommends git ca-certifi
 srcPath=$(pwd)
 
 cd /tmp
-git clone -b v7.5.0 --recursive-submodeules https://github.com/libbpf/bpftool.git
+git clone -b v7.5.0 --recurse-submodules https://github.com/libbpf/bpftool.git
 cd bpftool && git submodule update --init
 cd src && make install && sudo install ./bpftool /usr/local/sbin/bpftool
 

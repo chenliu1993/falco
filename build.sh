@@ -9,7 +9,7 @@ if [[ -z ${VERSION} ]]; then
 fi
 
 # Install deps and bpftool
-sudo apt-get update -y && sudo apt-get install -y --no-install-recommends ca-certificates cmake curl wget build-essential git pkg-config autoconf automake libtool m4 rpm alien llvm libelf-dev
+sudo apt update -y && sudo apt install -y --no-install-recommends git ca-certificates cmake curl wget build-essential clang pkg-config autoconf automake libtool m4 rpm alien llvm libelf-dev
 
 srcPath=$(pwd)
 

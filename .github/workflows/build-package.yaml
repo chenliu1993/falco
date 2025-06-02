@@ -44,4 +44,4 @@ jobs:
           aws-region: ${{ env.AWS_S3_REGION }}
       - name: Publish tar
         run: |
-          aws s3 cp build/falco-0.40.0-priv-x86_64.tar.gz s3://falco/falco-0.40.0-priv-x86_64.tar.gz
+          aws s3 cp build/falco-0.40.0-priv-x86_64.tar.gz s3://falco/falco-0.40.0-priv-x86_64.tar.gz --acl public-read

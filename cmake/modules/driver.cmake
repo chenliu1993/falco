@@ -19,7 +19,7 @@ set(DRIVER_CMAKE_WORKING_DIR "${CMAKE_BINARY_DIR}/driver-repo")
 file(MAKE_DIRECTORY ${DRIVER_CMAKE_WORKING_DIR})
 
 if(DRIVER_SOURCE_DIR)
-	set(DRIVER_VERSION "0.0.0-local")
+	set(DRIVER_VERSION "0.0.1-local")
 	message(STATUS "Using local version for driver: '${DRIVER_SOURCE_DIR}'")
 else()
 	# DRIVER_REPO accepts a repository name (<org name>/<repo name>) alternative to the

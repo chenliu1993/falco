@@ -27,7 +27,7 @@ set(USE_BUNDLED_DRIVER
 )
 
 if(FALCOSECURITY_LIBS_SOURCE_DIR)
-	set(FALCOSECURITY_LIBS_VERSION "0.0.0-local")
+	set(FALCOSECURITY_LIBS_VERSION "0.0.1-local")
 	message(STATUS "Using local version of falcosecurity/libs: '${FALCOSECURITY_LIBS_SOURCE_DIR}'")
 else()
 	# FALCOSECURITY_LIBS_REPO accepts a repository name (<org name>/<repo name>) alternative to the

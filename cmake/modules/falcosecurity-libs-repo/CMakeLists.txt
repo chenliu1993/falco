@@ -22,8 +22,7 @@ message(STATUS "Libs version: ${FALCOSECURITY_LIBS_VERSION}")
 
 ExternalProject_Add(
 	falcosecurity-libs
-	URL "https://github.com/${FALCOSECURITY_LIBS_REPO}/archive/${FALCOSECURITY_LIBS_VERSION}.tar.gz"
-	URL_HASH "${FALCOSECURITY_LIBS_CHECKSUM}"
+	SOURCE_DIR "${CMAKE_SOURCE_DIR}/libs"
 	CONFIGURE_COMMAND ""
 	BUILD_COMMAND ""
 	INSTALL_COMMAND ""

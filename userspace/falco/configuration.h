@@ -187,7 +187,7 @@ public:
 
 	uint32_t m_falco_libs_thread_table_size;
 	uint64_t m_falco_libs_snaplen;
-	uint32_t m_falco_libs_threads_purging_scan_time_ns;
+	uint64_t m_falco_libs_threads_purging_scan_time_ns;
 
 	// User supplied base_syscalls, overrides any Falco state engine enforcement.
 	std::unordered_set<std::string> m_base_syscalls_custom_set;

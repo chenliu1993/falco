@@ -596,7 +596,7 @@ void falco_configuration::load_yaml(const std::string &config_name) {
 	m_falco_libs_snaplen = m_config.get_scalar<std::uint64_t>("falco_libs.snaplen", 0);
 
 	m_falco_libs_threads_purging_scan_time_ns =
-	        m_config.get_scalar<std::uint32_t>("falco_libs.threads_purging_scan_time_ns",
+	        m_config.get_scalar<std::uint64_t>("falco_libs.threads_purging_scan_time_ns",
 	                                           DEFAULT_FALCO_LIBS_THREADS_PURGING_SCAN_NS);
 	m_base_syscalls_custom_set.clear();
 	m_config.get_sequence<std::unordered_set<std::string>>(m_base_syscalls_custom_set,

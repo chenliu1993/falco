@@ -346,6 +346,10 @@ public:
 		m_threads_purging_scan_time_ns = (uint64_t)val * ONE_SECOND_IN_NS;
 	}
 
+	inline void set_auto_threads_purging_interval_s_64(uint64_t val) {
+		m_threads_purging_scan_time_ns = val * ONE_SECOND_IN_NS;
+	}
+
 	/*!
 	 * \brief Enables or disables an automatic routine that periodically purges
 	 * users and groups infos from the internal state. If disabled, the client

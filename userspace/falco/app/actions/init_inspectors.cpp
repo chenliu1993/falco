@@ -44,7 +44,7 @@ static void init_syscall_inspector(falco::app::state& s, std::shared_ptr<sinsp> 
 	// If required, set the thread table purge time
 	//
 	if(s.config->m_falco_libs_threads_purging_scan_time_ns != 0) {
-		inspector->set_auto_threads_purging_interval_s(
+		inspector->set_auto_threads_purging_interval_s_64(
 		        s.config->m_falco_libs_threads_purging_scan_time_ns);
 	}
 

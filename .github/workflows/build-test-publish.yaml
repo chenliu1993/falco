@@ -13,7 +13,7 @@ jobs:
 
       - name: Build
         run: |
-          time ./build.sh
+          time ./build.sh ${{ env.FALCO_VERSION }}
           sudo ./build/unit_tests/falco_unit_tests
       - name: Pre Test
         run: |

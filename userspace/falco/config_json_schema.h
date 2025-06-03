@@ -445,7 +445,7 @@ const char config_schema_string[] = LONG_STRING_CONST(
                 "snaplen": {
                     "type": "integer"
                 },
-                "threads_purging_scan_time_ns": {       
+                "threads_purging_scan_time": {       
                     "type": "integer"
                 }
             },

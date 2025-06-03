@@ -43,9 +43,9 @@ static void init_syscall_inspector(falco::app::state& s, std::shared_ptr<sinsp> 
 	//
 	// If required, set the thread table purge time
 	//
-	if(s.config->m_falco_libs_threads_purging_scan_time_ns != 0) {
-		inspector->set_auto_threads_purging_interval_s_64(
-		        s.config->m_falco_libs_threads_purging_scan_time_ns);
+	if(s.config->m_falco_libs_threads_purging_scan_time != 0) {
+		inspector->set_auto_threads_purging_interval_s(
+		        s.config->m_falco_libs_threads_purging_scan_time);
 	}
 
 	if(s.is_driver_drop_failed_exit_enabled()) {

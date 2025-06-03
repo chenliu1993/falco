@@ -60,7 +60,7 @@ TEST(Configuration, schema_threads_purging_key_ok) {
 	/* OK YAML */
 	std::string config =
 	        "falco_libs:\n"
-	        "    threads_purging_scan_time_ns: 300\n";
+	        "    threads_purging_scan_time: 300\n";
 
 	EXPECT_NO_THROW(res = falco_config.init_from_content(config, {}));
 	EXPECT_VALIDATION_STATUS(res, yaml_helper::validation_ok);

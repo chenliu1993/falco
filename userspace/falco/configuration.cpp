@@ -87,7 +87,7 @@ falco_configuration::falco_configuration():
         m_syscall_evt_timeout_max_consecutives(1000),
         m_falco_libs_thread_table_size(DEFAULT_FALCO_LIBS_THREAD_TABLE_SIZE),
         m_falco_libs_snaplen(0),
-        m_falco_libs_threads_purging_scan_time_ns(DEFAULT_FALCO_LIBS_THREADS_PURGING_SCAN_NS),
+        m_falco_libs_threads_purging_scan_time(DEFAULT_FALCO_LIBS_THREADS_PURGING_SCAN_SECOND),
         m_base_syscalls_all(false),
         m_base_syscalls_repair(false),
         m_metrics_enabled(false),
@@ -595,9 +595,9 @@ void falco_configuration::load_yaml(const std::string &config_name) {
 	// if falco_libs.snaplen is not set we'll let libs configure it
 	m_falco_libs_snaplen = m_config.get_scalar<std::uint64_t>("falco_libs.snaplen", 0);
 
-	m_falco_libs_threads_purging_scan_time_ns =
-	        m_config.get_scalar<std::uint64_t>("falco_libs.threads_purging_scan_time_ns",
-	                                           DEFAULT_FALCO_LIBS_THREADS_PURGING_SCAN_NS);
+	m_falco_libs_threads_purging_scan_time =
+	        m_config.get_scalar<std::uint32_t>("falco_libs.threads_purging_scan_time",
+	                                           DEFAULT_FALCO_LIBS_THREADS_PURGING_SCAN_SECOND);
 	m_base_syscalls_custom_set.clear();
 	m_config.get_sequence<std::unordered_set<std::string>>(m_base_syscalls_custom_set,
 	                                                       std::string("base_syscalls.custom_set"));

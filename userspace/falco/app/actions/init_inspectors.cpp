@@ -40,6 +40,14 @@ static void init_syscall_inspector(falco::app::state& s, std::shared_ptr<sinsp> 
 		inspector->set_snaplen(s.config->m_falco_libs_snaplen);
 	}
 
+	//
+	// If required, set the thread table purge time
+	//
+	if(s.config->m_falco_libs_threads_purging_scan_time != 0) {
+		inspector->set_auto_threads_purging_interval_s(
+		        s.config->m_falco_libs_threads_purging_scan_time);
+	}
+
 	if(s.is_driver_drop_failed_exit_enabled()) {
 		falco_logger::log(falco_logger::level::INFO,
 		                  "Failed syscall exit events are dropped in the kernel driver\n");

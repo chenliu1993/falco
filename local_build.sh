@@ -4,23 +4,10 @@ set -exo pipefail
 
 VERSION=$1
 
-BPFTOOL_VERSION=$2
-USE_JEMALLOC=$3
-
-if [[ -z ${USE_JEMALLOC} ]]; then
-    USE_JEMALLOC=ON
-fi
-
 if [[ -z ${VERSION} ]]; then
     VERSION=0.40.0-priv
 fi
 
-if [[ -z ${BPFTOOL_VERSION} ]]; then
-    BPFTOOL_VERSION=v7.5.0
-fi
-
-# Remeber to bump these two fields to the reltive version if you want to make changes
-# Current based on 0.41.0
 DEFAULT_DRIVER_VERSION=8.1.0+driver
 DEFAULT_LIBS_VERSION=0.21.0
 
@@ -28,16 +15,16 @@ nproc=$(grep processor /proc/cpuinfo | tail -n 1 | awk '{print $3}')
 echo "Running with ${nproc}"
 
 # Install deps and bpftool
-sudo apt update -y && sudo apt install -y --no-install-recommends cppcheck git ca-certificates cmake curl wget build-essential clang pkg-config autoconf automake libtool m4 rpm alien llvm libelf-dev
-echo $(pwd)
+# sudo apt update -y && sudo apt install -y --no-install-recommends cppcheck git ca-certificates cmake curl wget build-essential clang pkg-config autoconf automake libtool m4 rpm alien llvm libelf-dev
+# echo $(pwd)
 srcPath=$(pwd)
 
-cd /tmp
-git clone -b ${BPFTOOL_VERSION} --recurse-submodules https://github.com/libbpf/bpftool.git
-cd bpftool && git submodule update --init
-cd src && sudo make install && sudo install ./bpftool /usr/local/sbin/bpftool
+# cd /tmp
+# git clone -b v7.5.0 --recurse-submodules https://github.com/libbpf/bpftool.git
+# cd bpftool && git submodule update --init
+# cd src && sudo make install && sudo install ./bpftool /usr/local/sbin/bpftool
 
-cd ${srcPath}
+# cd ${srcPath}
 
 rm -rf skeleton-build build
 
@@ -52,7 +39,7 @@ cmake -B skeleton-build -S . \
     -DFALCOSECURITY_LIBS_VERSION=${DEFAULT_LIBS_VERSION} \
     -DDRIVER_VERSION=${DEFAULT_DRIVER_VERSION}
 
-cmake --build skeleton-build --target ProbeSkeleton -j$((${nproc} - 1))
+cmake --build skeleton-build --target ProbeSkeleton -j8
 
 cmake -B build -S . \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
@@ -63,14 +50,14 @@ cmake -B build -S . \
     -DMODERN_BPF_SKEL_DIR=${srcPath}/skeleton-build/skel_dir \
     -DBUILD_DRIVER=ON \
     -DBUILD_BPF=ON \
-    -DUSE_JEMALLOC=${USE_JEMALLOC} \
+    -DUSE_JEMALLOC=ON \
     -DFALCO_VERSION=${VERSION} \
     -DFALCOSECURITY_LIBS_SOURCE_DIR="${srcPath}/libs" \
     -DDRIVER_SOURCE_DIR="${srcPath}/libs/driver" \
     -DFALCOSECURITY_LIBS_VERSION=${DEFAULT_LIBS_VERSION} \
     -DDRIVER_VERSION=${DEFAULT_DRIVER_VERSION}
-cmake --build build --target falco -j$((${nproc} - 1))
+cmake --build build --target falco -j8
 
-cmake --build build --target falco_unit_tests -j$((${nproc} - 1))
+cmake --build build --target falco_unit_tests -j8
 
 cmake --build build --target package

@@ -53,6 +53,19 @@ TEST(Configuration, schema_ok) {
 	EXPECT_VALIDATION_STATUS(res, yaml_helper::validation_ok);
 }
 
+TEST(Configuration, schema_threads_purging_key_ok) {
+	falco_configuration falco_config;
+	config_loaded_res res;
+
+	/* OK YAML */
+	std::string config =
+	        "falco_libs:\n"
+	        "    threads_purging_scan_time_ns: 300\n";
+
+	EXPECT_NO_THROW(res = falco_config.init_from_content(config, {}));
+	EXPECT_VALIDATION_STATUS(res, yaml_helper::validation_ok);
+}
+
 TEST(Configuration, schema_wrong_key) {
 	falco_configuration falco_config;
 	config_loaded_res res;
@@ -85,6 +98,19 @@ TEST(Configuration, schema_wrong_embedded_key) {
 	std::string config =
 	        "falco_libs:\n"
 	        "    thread_table_sizeee: 50\n";
+
+	EXPECT_NO_THROW(res = falco_config.init_from_content(config, {}));
+	EXPECT_VALIDATION_STATUS(res, yaml_helper::validation_failed);
+}
+
+TEST(Configuration, schema_wrong_embedded_threads_purging_key) {
+	falco_configuration falco_config;
+	config_loaded_res res;
+
+	/* Miss-typed sub-key YAML */
+	std::string config =
+	        "falco_libs:\n"
+	        "    threads_purging_scan_time_nss: 50\n";
 
 	EXPECT_NO_THROW(res = falco_config.init_from_content(config, {}));
 	EXPECT_VALIDATION_STATUS(res, yaml_helper::validation_failed);

@@ -20,10 +20,23 @@ include(ExternalProject)
 message(STATUS "Libs repository: ${FALCOSECURITY_LIBS_REPO}")
 message(STATUS "Libs version: ${FALCOSECURITY_LIBS_VERSION}")
 
+# ExternalProject_Add(
+# 	falcosecurity-libs
+# 	URL "https://github.com/${FALCOSECURITY_LIBS_REPO}/archive/${FALCOSECURITY_LIBS_VERSION}.tar.gz"
+# 	URL_HASH "${FALCOSECURITY_LIBS_CHECKSUM}"
+# 	CONFIGURE_COMMAND ""
+# 	BUILD_COMMAND ""
+# 	INSTALL_COMMAND ""
+# 	TEST_COMMAND ""
+# )
+
+# Use in local
 ExternalProject_Add(
 	falcosecurity-libs
-	URL "https://github.com/${FALCOSECURITY_LIBS_REPO}/archive/${FALCOSECURITY_LIBS_VERSION}.tar.gz"
-	URL_HASH "${FALCOSECURITY_LIBS_CHECKSUM}"
+	GIT_REPOSITORY      https://github.com/chenliu1993/libs
+    GIT_TAG             0.20.0-priv-fix  # Can be a tag, branch, or commit hash
+    GIT_SHALLOW         1       # Optional: Clones only the latest commit (--depth 1)
+
 	CONFIGURE_COMMAND ""
 	BUILD_COMMAND ""
 	INSTALL_COMMAND ""

@@ -1133,7 +1133,7 @@ syscall_event_drops:
 # todo: syscall_counters_enabled option
 metrics:
   enabled: true
-  interval: 15s
+  interval: 30s
   # Typically, in production, you only use `output_rule` or `output_file`, but not both. 
   # However, if you have a very unique use case, you can use both together.
   # Set `webserver.prometheus_metrics_enabled` for Prometheus output.
@@ -1305,7 +1305,8 @@ base_syscalls:
 # Use this option with caution since it can have a strong performance impact.
 #
 falco_libs:
-  thread_table_size: 262144
+  # thread_table_size: 262144
+  thread_table_size: 800
   snaplen: 80
 
 # [Incubating] `container_engines`

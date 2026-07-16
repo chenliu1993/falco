@@ -1,0 +1,13 @@
+[Unit]
+Description=falco debug service
+After=network.target
+StartLimitIntervalSec=0
+[Service]
+Type=simple
+Restart=always
+RestartSec=2
+User=root
+ExecStart=/home/cliu/go/src/github.com/chenliu1993/build-falco.sh run
+
+[Install]
+WantedBy=multi-user.target
